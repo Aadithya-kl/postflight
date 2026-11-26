@@ -12,11 +12,20 @@ updates:
     labels:
       - dependencies
     groups:
+      # update-types confines each group to minor and patch releases. Majors are
+      # deliberately excluded: a grouped major bump lands several breaking
+      # changes in one PR that nobody can review a piece at a time.
       typescript-toolchain:
+        update-types:
+          - minor
+          - patch
         patterns:
           - "typescript"
           - "@types/*"
       studio-frontend:
+        update-types:
+          - minor
+          - patch
         patterns:
           - "react"
           - "react-dom"
@@ -26,6 +35,26 @@ updates:
     ignore:
       # Node 20 is the supported floor; @types/node must not jump ahead of it.
       - dependency-name: "@types/node"
+        update-types:
+          - version-update:semver-major
+
+      # Major upgrades of the build toolchain are breaking by definition and
+      # need a human driving them: TypeScript 5 -> 7 and Vite 6 -> 8 both broke
+      # the build when Dependabot proposed them automatically.
+      # Do these deliberately, one at a time, on a branch.
+      - dependency-name: "typescript"
+        update-types:
+          - version-update:semver-major
+      - dependency-name: "vite"
+        update-types:
+          - version-update:semver-major
+      - dependency-name: "@vitejs/plugin-react"
+        update-types:
+          - version-update:semver-major
+      - dependency-name: "react"
+        update-types:
+          - version-update:semver-major
+      - dependency-name: "react-dom"
         update-types:
           - version-update:semver-major
 

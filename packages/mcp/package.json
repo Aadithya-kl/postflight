@@ -1,0 +1,52 @@
+{
+  "name": "@postflight/mcp",
+  "version": "1.0.0",
+  "description": "Zero-dependency Model Context Protocol (MCP) stdio server giving AI agents deterministic social media pre-flight linting, safe-zone collision math, fold previews, and canonical compilation.",
+  "type": "module",
+  "bin": {
+    "postflight-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@postflight/core": "*"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/prateeekranga/postflight/tree/main/packages/mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateeekranga/postflight.git",
+    "directory": "packages/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/prateeekranga/postflight/issues"
+  },
+  "author": "prateeekranga (https://github.com/prateeekranga)",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "cursor",
+    "windsurf",
+    "ai-agents",
+    "social-media",
+    "linter",
+    "preflight",
+    "json-rpc"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "brandName": "Acme DevTools",
+  "forbiddenTerms": [
+    "guaranteed returns",
+    "100% risk-free",
+    "secret hack"
+  ],
+  "requiredTerms": [],
+  "requiredUtmParams": [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign"
+  ],
+  "expectedUtmMedium": "social",
+  "disclosureJurisdiction": "both",
+  "flagAiSlop": true,
+  "strictAccessibility": true,
+  "allowExternalLinks": false,
+  "useApiLimits": true
+}

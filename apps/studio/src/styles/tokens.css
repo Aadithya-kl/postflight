@@ -1,0 +1,191 @@
+/* ==========================================================================
+   PostFlight Monochrome Liquid Glass Design Tokens
+   Black & White editorial contrast, soft silver/obsidian gradients,
+   and optical frosted translucency with accessible fallbacks.
+   Color-scheme managed via <meta name="color-scheme"> + CSS light-dark().
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  &:has(> head > meta[name='color-scheme'][content='dark']) {
+    color-scheme: dark;
+  }
+
+  &:has(> head > meta[name='color-scheme'][content='light']) {
+    color-scheme: light;
+  }
+
+  /* Monochrome Canvas & Layered Surfaces */
+  --canvas: light-dark(#f2f2f5, #070709);
+  --canvas-glow-1: light-dark(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.085));
+  --canvas-glow-2: light-dark(rgba(0, 0, 0, 0.055), rgba(255, 255, 255, 0.045));
+
+  --surface: light-dark(#ffffff, #111114);
+  --surface-elevated: light-dark(#f6f6f8, #19191e);
+  --surface-sunken: light-dark(#ececef, #0b0b0e);
+
+  /* Liquid Glass Material Tokens */
+  --glass-bg: light-dark(rgba(255, 255, 255, 0.68), rgba(22, 22, 27, 0.62));
+  --glass-bg-strong: light-dark(rgba(255, 255, 255, 0.82), rgba(18, 18, 22, 0.78));
+  --glass-bg-subtle: light-dark(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.04));
+  --glass-header-bg: light-dark(rgba(246, 246, 248, 0.72), rgba(10, 10, 13, 0.72));
+  --glass-border: light-dark(rgba(9, 9, 11, 0.1), rgba(255, 255, 255, 0.14));
+  --glass-specular: light-dark(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.22));
+  --glass-inner-sheen: light-dark(
+    linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.18) 50%, rgba(255, 255, 255, 0.45) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 55%, rgba(255, 255, 255, 0.06) 100%)
+  );
+  --glass-blur: blur(22px) saturate(155%);
+
+  /* High-Contrast Monochrome Ink (all text pairs >= 4.5:1 WCAG AA) */
+  --ink: light-dark(#09090b, #fafafa);
+  --ink-muted: light-dark(#4b4b53, #a8a8b3);
+  --ink-subtle: light-dark(#64646e, #8d8d99);
+
+  /* Architectural Borders */
+  --border: light-dark(rgba(9, 9, 11, 0.11), rgba(255, 255, 255, 0.13));
+  --border-subtle: light-dark(rgba(9, 9, 11, 0.06), rgba(255, 255, 255, 0.08));
+  --control-border: light-dark(rgba(9, 9, 11, 0.24), rgba(255, 255, 255, 0.24));
+
+  /* Monochrome Accent & Gradients */
+  --accent: light-dark(#09090b, #fafafa);
+  --accent-hover: light-dark(#27272a, #e4e4e7);
+  --accent-ink: light-dark(#ffffff, #09090b);
+  --accent-gradient: light-dark(
+    linear-gradient(180deg, #27272a 0%, #09090b 100%),
+    linear-gradient(180deg, #ffffff 0%, #d4d4d8 100%)
+  );
+  --accent-gradient-hover: light-dark(
+    linear-gradient(180deg, #3f3f46 0%, #18181b 100%),
+    linear-gradient(180deg, #ffffff 0%, #e4e4e7 100%)
+  );
+  --surface-gradient: light-dark(
+    linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(244, 244, 247, 0.65) 100%),
+    linear-gradient(180deg, rgba(28, 28, 34, 0.72) 0%, rgba(16, 16, 20, 0.62) 100%)
+  );
+  --hero-text-gradient: light-dark(
+    linear-gradient(135deg, #09090b 0%, #3f3f46 100%),
+    linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%)
+  );
+
+  /* Semantic Status Signals (kept crisp, minimal & accessible) */
+  --cleared: light-dark(#15803d, #34d399);
+  --cleared-text: light-dark(#146c34, #6ee7b7);
+  --cleared-ink: light-dark(#ffffff, #052012);
+
+  --caution: light-dark(#b45309, #fbbf24);
+  --caution-text: light-dark(#92400e, #fcd34d);
+  --caution-ink: light-dark(#ffffff, #1f1302);
+
+  --hazard: light-dark(#dc2626, #f87171);
+  --hazard-text: light-dark(#b91c1c, #fca5a5);
+  --hazard-ink: light-dark(#ffffff, #240707);
+
+  /* Soft Tints via color-mix(in oklab, ...) */
+  --accent-tint: color-mix(in oklab, var(--accent) 9%, var(--surface));
+  --accent-tint-strong: color-mix(in oklab, var(--accent) 16%, var(--surface));
+  --cleared-tint: color-mix(in oklab, var(--cleared) 11%, var(--surface));
+  --caution-tint: color-mix(in oklab, var(--caution) 12%, var(--surface));
+  --hazard-tint: color-mix(in oklab, var(--hazard) 11%, var(--surface));
+  --hazard-tint-strong: color-mix(in oklab, var(--hazard) 18%, var(--surface));
+
+  /* Typography */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Fluid Type Scale (max <= 2.5x min) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 0.9375rem;
+  --text-md: 1rem;
+  --text-lg: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-xl: clamp(1.3125rem, 1.12rem + 0.8vw, 1.75rem);
+
+  /* Geometry & Liquid Glass Elevation */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-glass: light-dark(
+    0 8px 30px rgba(9, 9, 11, 0.06), 0 1px 2px rgba(9, 9, 11, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 14px 36px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.16)
+  );
+  --shadow-card: light-dark(
+    0 6px 24px rgba(9, 9, 11, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 12px 32px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.14)
+  );
+  --shadow-pill: light-dark(
+    0 2px 8px rgba(9, 9, 11, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 4px 14px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2)
+  );
+  --shadow-modal: light-dark(
+    0 24px 64px rgba(9, 9, 11, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 28px 72px rgba(0, 0, 0, 0.72), inset 0 1px 0 rgba(255, 255, 255, 0.18)
+  );
+
+  /* Focus Ring */
+  --focus-ring: 2px solid var(--ink);
+  --focus-offset: 2px;
+
+  /* Spacing Rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Motion */
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --ease-snappy: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-bg: light-dark(#ffffff, #141418);
+    --glass-bg-strong: light-dark(#ffffff, #141418);
+    --glass-bg-subtle: light-dark(#f4f4f6, #1b1b20);
+    --glass-header-bg: light-dark(#ffffff, #111115);
+    --glass-blur: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :root {
+    --border: CanvasText;
+    --border-subtle: CanvasText;
+    --control-border: ButtonText;
+    --glass-border: CanvasText;
+    --glass-blur: none;
+    --accent: Highlight;
+    --cleared: CanvasText;
+    --caution: CanvasText;
+    --hazard: CanvasText;
+    --shadow-card: none;
+    --shadow-glass: none;
+    --shadow-pill: none;
+    --shadow-modal: none;
+  }
+}

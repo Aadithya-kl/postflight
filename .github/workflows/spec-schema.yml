@@ -1,0 +1,20 @@
+name: Validate Platform Specs
+
+on:
+  pull_request:
+    paths:
+      - 'specs/**'
+      - 'packages/core/src/specs/**'
+
+jobs:
+  verify-spec-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build --workspace=@postflight/core
+      - run: node --test packages/core/test/specs-sync.test.mjs

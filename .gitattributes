@@ -1,0 +1,19 @@
+# Normalize all text files to LF in the repository and in working copies.
+# Without this, Windows contributors produce CRLF diffs that touch every line.
+* text=auto eol=lf
+
+# Explicitly binary — never normalize, never diff as text.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.woff binary
+*.woff2 binary
+*.mp4  binary
+*.mov  binary
+
+# Generated or vendored files: collapse in PR diffs and exclude from language stats.
+package-lock.json  linguist-generated=true -diff
+docs/RULES.md      linguist-generated=true

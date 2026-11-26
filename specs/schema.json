@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://postflight.dev/schemas/platform-spec.v1.json",
+  "title": "PostFlight Platform Specification",
+  "description": "Versioned, community-maintained specification for social media platform limits, fold cutoffs, safe zones, media rules, and algorithmic policies.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "shortName",
+    "specVersion",
+    "lastVerified",
+    "counting",
+    "folds",
+    "hashtags",
+    "links",
+    "altText",
+    "media",
+    "sources"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "shortName": { "type": "string" },
+    "specVersion": { "type": "string" },
+    "lastVerified": { "type": "string", "format": "date" },
+    "counting": {
+      "type": "object",
+      "required": ["algorithm", "hardLimit"],
+      "properties": {
+        "algorithm": {
+          "enum": ["x-weighted", "utf16", "standard", "threads-emoji-utf8", "bluesky-dual", "mastodon"]
+        },
+        "hardLimit": { "type": "integer", "minimum": 1 },
+        "apiHardLimit": { "type": ["integer", "null"] },
+        "premiumLimit": { "type": ["integer", "null"] },
+        "maxBytes": { "type": ["integer", "null"] },
+        "urlWeight": { "type": ["integer", "null"] },
+        "firstCommentLimit": { "type": ["integer", "null"] },
+        "forbiddenChars": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" }
+      }
+    },
+    "folds": {
+      "type": "object",
+      "required": ["mobileChars", "desktopChars"],
+      "properties": {
+        "mobileChars": { "type": ["integer", "null"] },
+        "mobileLines": { "type": ["integer", "null"] },
+        "mobileCharsWithMedia": { "type": ["integer", "null"] },
+        "mobileLinesWithMedia": { "type": ["integer", "null"] },
+        "desktopChars": { "type": ["integer", "null"] },
+        "desktopLines": { "type": ["integer", "null"] },
+        "desktopCharsWithMedia": { "type": ["integer", "null"] },
+        "desktopLinesWithMedia": { "type": ["integer", "null"] },
+        "blankLinesCountAsLines": { "type": "boolean" },
+        "foldLabel": { "type": "string" },
+        "ftcMaxMobileChars": { "type": "integer" }
+      }
+    },
+    "hashtags": {
+      "type": "object",
+      "required": ["hardCap", "recommendedMax", "style"],
+      "properties": {
+        "hardCap": { "type": ["integer", "null"] },
+        "recommendedMin": { "type": "integer" },
+        "recommendedMax": { "type": "integer" },
+        "style": { "enum": ["standard", "topic-tag", "pascal-case-preferred"] },
+        "excessBehavior": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "required": ["clickableInBody", "bodyPenaltyRisk", "firstCommentSafe"],
+      "properties": {
+        "clickableInBody": { "type": "boolean" },
+        "bodyPenaltyRisk": { "enum": ["none", "low", "moderate", "high"] },
+        "firstCommentSafe": { "type": "boolean" },
+        "maxUniqueUrlsApi": { "type": ["integer", "null"] },
+        "recommendedStrategy": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "altText": {
+      "type": "object",
+      "required": ["supported", "maxChars", "recommendedMax"],
+      "properties": {
+        "supported": { "type": "boolean" },
+        "maxChars": { "type": ["integer", "null"] },
+        "recommendedMax": { "type": ["integer", "null"] }
+      }
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "maxImages": { "type": "integer" },
+        "maxImageSizeBytes": { "type": ["integer", "null"] },
+        "maxVideoSizeBytes": { "type": ["integer", "null"] },
+        "maxVideoDurationSec": { "type": ["integer", "null"] },
+        "recommendedVideoDurationSec": { "type": ["integer", "null"] },
+        "canMixImagesAndVideo": { "type": "boolean" },
+        "aspectRatios": { "type": "array", "items": { "type": "string" } },
+        "recommendedCanvas": {
+          "type": ["object", "null"],
+          "properties": {
+            "width": { "type": "integer" },
+            "height": { "type": "integer" }
+          }
+        },
+        "profileGridCrop": {
+          "type": ["object", "null"],
+          "properties": {
+            "feedCanvas": { "type": "string" },
+            "gridRatio": { "type": "string" },
+            "innerSafeWidth": { "type": "integer" },
+            "innerSafeHeight": { "type": "integer" },
+            "sideCropPx": { "type": "integer" }
+          }
+        },
+        "watermarkPenalized": { "type": "boolean" },
+        "firstSlideLocksRatio": { "type": "boolean" }
+      }
+    },
+    "safeZones": {
+      "type": "object"
+    },
+    "oauth": {
+      "type": ["object", "null"],
+      "properties": {
+        "accessTokenTtlHours": { "type": ["number", "null"] },
+        "refreshTokenTtlDays": { "type": ["number", "null"] },
+        "supportsProgrammaticRefresh": { "type": "boolean" },
+        "rotationRaceRisk": { "type": "boolean" },
+        "gotcha": { "type": "string" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

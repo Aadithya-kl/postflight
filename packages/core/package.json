@@ -1,0 +1,60 @@
+{
+  "name": "@postflight/core",
+  "version": "1.0.0",
+  "description": "Zero-dependency social media pre-flight compiler, deterministic linter, fold simulator, safe-zone collision engine, and governance ledger.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {},
+  "license": "MIT",
+  "homepage": "https://github.com/prateeekranga/postflight/tree/main/packages/core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateeekranga/postflight.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/prateeekranga/postflight/issues"
+  },
+  "author": "prateeekranga (https://github.com/prateeekranga)",
+  "keywords": [
+    "social-media",
+    "linter",
+    "preflight",
+    "safe-zone",
+    "accessibility",
+    "wcag",
+    "ftc-compliance",
+    "open-graph",
+    "bluesky",
+    "atproto",
+    "linkedin",
+    "instagram",
+    "tiktok",
+    "threads",
+    "mastodon",
+    "youtube-shorts",
+    "zero-dependency"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

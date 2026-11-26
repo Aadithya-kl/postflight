@@ -1,0 +1,94 @@
+{
+  "id": "youtube-shorts",
+  "name": "YouTube Shorts",
+  "shortName": "YT Shorts",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "standard",
+    "hardLimit": 100,
+    "apiHardLimit": 100,
+    "premiumLimit": null,
+    "maxBytes": null,
+    "urlWeight": null,
+    "firstCommentLimit": 10000,
+    "forbiddenChars": ["<", ">"],
+    "notes": "Title hard limit is 100 chars (description is 5,000 chars). Angle brackets '<' and '>' are disallowed by YouTube API."
+  },
+  "folds": {
+    "mobileChars": 45,
+    "mobileLines": 1,
+    "mobileCharsWithMedia": 45,
+    "mobileLinesWithMedia": 1,
+    "desktopChars": 65,
+    "desktopLines": 2,
+    "desktopCharsWithMedia": 65,
+    "desktopLinesWithMedia": 2,
+    "blankLinesCountAsLines": false,
+    "foldLabel": "...",
+    "ftcMaxMobileChars": 40
+  },
+  "hashtags": {
+    "hardCap": 60,
+    "recommendedMin": 2,
+    "recommendedMax": 5,
+    "style": "pascal-case-preferred",
+    "excessBehavior": "CRITICAL: Exceeding 60 hashtags causes YouTube to silently ignore ALL hashtags on the video.",
+    "notes": "Only the first 3 hashtags display prominently. Keep to 3-5 targeted tags."
+  },
+  "links": {
+    "clickableInBody": false,
+    "bodyPenaltyRisk": "low",
+    "firstCommentSafe": false,
+    "maxUniqueUrlsApi": null,
+    "recommendedStrategy": "Links in Shorts descriptions & comments are non-clickable; use the native Related Video link or channel profile links.",
+    "notes": "YouTube disabled clickable URLs in Shorts descriptions and pinned comments to curb spam."
+  },
+  "altText": {
+    "supported": false,
+    "maxChars": null,
+    "recommendedMax": null
+  },
+  "media": {
+    "maxImages": 0,
+    "maxImageSizeBytes": null,
+    "maxVideoSizeBytes": 274877906944,
+    "maxVideoDurationSec": 180,
+    "recommendedVideoDurationSec": 60,
+    "canMixImagesAndVideo": false,
+    "aspectRatios": ["9:16", "1:1"],
+    "recommendedCanvas": { "width": 1080, "height": 1920 },
+    "profileGridCrop": null,
+    "watermarkPenalized": true,
+    "firstSlideLocksRatio": false
+  },
+  "safeZones": {
+    "organic": {
+      "canvas": { "width": 1080, "height": 1920 },
+      "top": 288,
+      "bottom": 380,
+      "left": 60,
+      "right": 192,
+      "label": "YouTube Shorts Organic (tall top header + wide right action stack)"
+    },
+    "ad": {
+      "canvas": { "width": 1080, "height": 1920 },
+      "top": 288,
+      "bottom": 672,
+      "left": 48,
+      "right": 192,
+      "label": "YouTube Shorts Paid Ad (Google Vertical Ad Spec: 15% top, 35% bottom, 17.78% right)"
+    }
+  },
+  "oauth": {
+    "accessTokenTtlHours": 1,
+    "refreshTokenTtlDays": null,
+    "supportsProgrammaticRefresh": true,
+    "rotationRaceRisk": false,
+    "gotcha": "Google OAuth refresh tokens expire in 7 days if the Cloud project stays in 'Testing' publishing status; move to Production for non-expiring refresh tokens. 16:9 videos <=3 min are silently classified as long-form, NOT Shorts — must be 9:16 or 1:1. Audio fingerprinting blocks videos with unlicensed commercial music. YouTube disabled clickable URLs in Shorts descriptions and pinned comments to curb spam."
+  },
+  "sources": [
+    "YouTube Help (3-min Shorts expansion Oct 2024, 60-hashtag ignore-all policy, 100-char title)",
+    "Google Vertical Video Ad Safe Zone Spec"
+  ]
+}

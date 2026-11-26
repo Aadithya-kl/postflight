@@ -1,0 +1,58 @@
+{
+  "name": "postflight-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Open-source pre-flight compiler, linter, safe-zone X-ray, and MCP governance studio for social media.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@postflight/core && npm run build --workspace=@postflight/cli && npm run build --workspace=@postflight/mcp && npm run build --workspace=@postflight/studio",
+    "build:packages": "npm run build --workspace=@postflight/core && npm run build --workspace=@postflight/cli && npm run build --workspace=@postflight/mcp",
+    "typecheck": "npm run typecheck --workspace=@postflight/core && npm run typecheck --workspace=@postflight/cli && npm run typecheck --workspace=@postflight/mcp && npm run typecheck --workspace=@postflight/studio",
+    "docs:rules": "npm run build --workspace=@postflight/core && node scripts/generate-rules-doc.mjs",
+    "test": "npm run build:packages && node --test packages/core/test/*.test.mjs packages/cli/test/*.test.mjs packages/mcp/test/*.test.mjs",
+    "dev:studio": "npm run dev --workspace=@postflight/studio",
+    "studio": "node packages/cli/dist/index.js studio",
+    "postflight": "node packages/cli/dist/index.js",
+    "lint:examples": "node packages/cli/dist/index.js check examples/campaigns/launch-announcement.md"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "social-media",
+    "linter",
+    "preflight",
+    "safe-zone",
+    "mcp",
+    "cli",
+    "accessibility",
+    "wcag",
+    "ftc-compliance",
+    "bluesky",
+    "linkedin",
+    "instagram",
+    "tiktok",
+    "youtube-shorts",
+    "twitter",
+    "mastodon",
+    "threads"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/prateeekranga/postflight#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateeekranga/postflight.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prateeekranga/postflight/issues"
+  },
+  "author": "prateeekranga (https://github.com/prateeekranga)"
+}

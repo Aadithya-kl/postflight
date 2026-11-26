@@ -1,0 +1,76 @@
+{
+  "id": "mastodon",
+  "name": "Mastodon (Fediverse)",
+  "shortName": "Mastodon",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "mastodon",
+    "hardLimit": 500,
+    "apiHardLimit": 500,
+    "premiumLimit": null,
+    "maxBytes": null,
+    "urlWeight": 23,
+    "firstCommentLimit": 500,
+    "forbiddenChars": [],
+    "notes": "All URLs count as flat 23 chars; remote mentions (@user@instance.tld) count ONLY '@user'; Content Warning (spoilerText) is added to total character count."
+  },
+  "folds": {
+    "mobileChars": 500,
+    "mobileLines": null,
+    "mobileCharsWithMedia": 500,
+    "mobileLinesWithMedia": null,
+    "desktopChars": 500,
+    "desktopLines": null,
+    "desktopCharsWithMedia": 500,
+    "desktopLinesWithMedia": null,
+    "blankLinesCountAsLines": false,
+    "foldLabel": "Read more",
+    "ftcMaxMobileChars": 500
+  },
+  "hashtags": {
+    "hardCap": null,
+    "recommendedMin": 2,
+    "recommendedMax": 5,
+    "style": "pascal-case-preferred",
+    "excessBehavior": "PascalCase hashtags are strongly enforced by Fediverse norms for screen readers and cross-instance discovery. Purely numeric hashtags (e.g. #2026) do NOT linkify on Mastodon.",
+    "notes": "Crucial for Fediverse discovery since full-text search is opt-in across instances. Hashtags must contain at least one letter (#2026 fails; use #Year2026)."
+  },
+  "links": {
+    "clickableInBody": true,
+    "bodyPenaltyRisk": "none",
+    "firstCommentSafe": true,
+    "maxUniqueUrlsApi": null,
+    "recommendedStrategy": "Include direct links freely; add fediverse:creator meta tag on target pages for author attribution cards.",
+    "notes": "Chronological timeline — zero algorithmic link suppression."
+  },
+  "altText": {
+    "supported": true,
+    "maxChars": 1500,
+    "recommendedMax": 300
+  },
+  "media": {
+    "maxImages": 4,
+    "maxImageSizeBytes": 16777216,
+    "maxVideoSizeBytes": 103809024,
+    "maxVideoDurationSec": null,
+    "recommendedVideoDurationSec": 90,
+    "canMixImagesAndVideo": false,
+    "aspectRatios": ["16:9", "4:5", "1:1"],
+    "recommendedCanvas": { "width": 1280, "height": 720 },
+    "profileGridCrop": null,
+    "watermarkPenalized": false,
+    "firstSlideLocksRatio": false
+  },
+  "safeZones": {},
+  "oauth": {
+    "accessTokenTtlHours": null,
+    "refreshTokenTtlDays": null,
+    "supportsProgrammaticRefresh": false,
+    "rotationRaceRisk": false,
+    "gotcha": "Standard Mastodon OAuth access tokens do not auto-expire unless revoked by user or instance admin; limits vary by instance (/api/v2/instance)."
+  },
+  "sources": [
+    "Mastodon Official Documentation (docs.joinmastodon.org, 500-char default, 23-char URLs, domain-excluded mentions, DESCRIPTION_LIMIT 1500)"
+  ]
+}

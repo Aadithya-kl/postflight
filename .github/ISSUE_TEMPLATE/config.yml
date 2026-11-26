@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Question or discussion
+    url: https://github.com/prateeekranga/postflight/discussions
+    about: "Not sure if it's a bug? Want to talk through an approach, or ask how something works? Start here."
+
+  - name: Report a security vulnerability
+    url: https://github.com/prateeekranga/postflight/security/advisories/new
+    about: "Report privately via GitHub Security Advisories. Please do not open a public issue for vulnerabilities."
+
+  - name: Looking for something to work on
+    url: https://github.com/prateeekranga/postflight/blob/main/docs/GOOD_FIRST_ISSUES.md
+    about: "Scoped starter tasks with the exact files to touch."

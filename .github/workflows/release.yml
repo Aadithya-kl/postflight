@@ -1,0 +1,86 @@
+name: Release
+
+# Publishes @postflight/core, /cli and /mcp to npm when a v* tag is pushed.
+#
+# Inert until BOTH of these are set up:
+#   1. The @postflight organization exists on npm.
+#   2. An automation token is stored as the NPM_TOKEN repository secret.
+# Until then this workflow simply never runs, because nothing pushes a v* tag.
+#
+#   git tag v1.0.0 && git push origin v1.0.0
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build and pack only; do not publish to npm"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Build, typecheck & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run typecheck
+      - run: npm test
+
+      - name: Verify the tag matches the package version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PKG="$(node -p "require('./packages/core/package.json').version")"
+          if [ "$TAG" != "$PKG" ]; then
+            echo "::error::Tag v$TAG does not match packages/core version $PKG"
+            exit 1
+          fi
+          echo "Tag v$TAG matches package version $PKG"
+
+  publish:
+    name: Publish to npm
+    needs: verify
+    runs-on: ubuntu-latest
+    # npm provenance requires id-token write
+    permissions:
+      contents: read
+      id-token: write
+    environment: release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run build:packages
+
+      - name: Pack (dry run)
+        if: inputs.dry_run
+        run: |
+          npm pack --workspace=@postflight/core
+          npm pack --workspace=@postflight/cli
+          npm pack --workspace=@postflight/mcp
+
+      - name: Publish
+        if: ${{ !inputs.dry_run }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # core first — cli and mcp depend on it
+          npm publish --workspace=@postflight/core --access public --provenance
+          npm publish --workspace=@postflight/cli  --access public --provenance
+          npm publish --workspace=@postflight/mcp  --access public --provenance

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420" role="img" aria-labelledby="stitle sdesc">
+  <title id="stitle">Safe-Zone X-Ray: platform UI chrome and profile-grid crops</title>
+  <desc id="sdesc">Three frames. TikTok organic 9:16 showing UI chrome consuming 47 percent of the frame. Instagram Reels 9:16 cover losing 240 pixels top and bottom to the 3:4 profile grid. Instagram feed 4:5 losing 34 pixels from each side.</desc>
+  <style>
+    .bg      { fill: #ffffff; }
+    .frame   { fill: #f1f5f9; stroke: #94a3b8; }
+    .chrome  { fill: #c43e1c; fill-opacity: 0.22; }
+    .chromes { stroke: #c43e1c; stroke-opacity: 0.55; }
+    .safe    { fill: #137547; fill-opacity: 0.13; stroke: #137547; }
+    .t       { fill: #0f172a; font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .t-dim   { fill: #64748b; }
+    .mono    { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .bad     { fill: #c43e1c; }
+    .good    { fill: #137547; }
+    .h       { font-weight: 700; }
+    @media (prefers-color-scheme: dark) {
+      .bg      { fill: #0d1117; }
+      .frame   { fill: #161b22; stroke: #484f58; }
+      .chrome  { fill: #f85149; fill-opacity: 0.26; }
+      .chromes { stroke: #f85149; stroke-opacity: 0.6; }
+      .safe    { fill: #3fb950; fill-opacity: 0.16; stroke: #3fb950; }
+      .t       { fill: #e6edf3; }
+      .t-dim   { fill: #8b949e; }
+      .bad     { fill: #f85149; }
+      .good    { fill: #3fb950; }
+    }
+  </style>
+
+  <rect class="bg" width="900" height="420" rx="8"/>
+
+  <text class="t h" x="40" y="36" font-size="15">Safe-Zone X-Ray · pixel-accurate 2D collision across 16 presets</text>
+  <text class="t t-dim" x="40" y="58" font-size="12">Red is UI chrome or profile-grid crop. Green is what actually survives on screen.</text>
+
+  <!-- ================= TikTok Organic ================= -->
+  <g transform="translate(60,86)">
+    <text class="t h mono" x="0" y="0" font-size="11.5">TikTok Organic 9:16</text>
+    <text class="t t-dim mono" x="0" y="15" font-size="9.5">1080 × 1920</text>
+
+    <rect class="frame" x="0" y="26" width="180" height="256" rx="4" stroke-width="1"/>
+    <!-- chrome bands: top 240/1920, bottom 380/1920, left 60/1080, right 180/1080 -->
+    <rect class="chrome" x="0" y="26"  width="180" height="32"/>
+    <rect class="chrome" x="0" y="231" width="180" height="51"/>
+    <rect class="chrome" x="0" y="58"  width="10"  height="173"/>
+    <rect class="chrome" x="150" y="58" width="30" height="173"/>
+    <rect class="safe"   x="10" y="58" width="140" height="173" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+    <text class="bad mono" x="90" y="47" font-size="8" text-anchor="middle">nav · 240px</text>
+    <text class="bad mono" x="90" y="262" font-size="8" text-anchor="middle">caption + audio · 380px</text>
+    <text class="bad mono" x="168" y="148" font-size="8" text-anchor="middle" transform="rotate(-90,168,148)">rail · 180px</text>
+    <text class="good mono h" x="80" y="148" font-size="9" text-anchor="middle">SAFE</text>
+    <text class="good mono" x="80" y="161" font-size="8" text-anchor="middle">840 × 1300</text>
+
+    <text class="bad mono h" x="0" y="302" font-size="10.5">47% of frame consumed</text>
+    <text class="t t-dim mono" x="0" y="317" font-size="9.5">--preset tiktok-organic</text>
+  </g>
+
+  <!-- ================= IG Reels cover -> 3:4 grid ================= -->
+  <g transform="translate(360,86)">
+    <text class="t h mono" x="0" y="0" font-size="11.5">IG Reels → 3:4 Grid</text>
+    <text class="t t-dim mono" x="0" y="15" font-size="9.5">1080 × 1920 cover</text>
+
+    <rect class="frame" x="0" y="26" width="180" height="256" rx="4" stroke-width="1"/>
+    <!-- 240px top and bottom cropped out of 1920 -->
+    <rect class="chrome" x="0" y="26"  width="180" height="32"/>
+    <rect class="chrome" x="0" y="250" width="180" height="32"/>
+    <rect class="safe"   x="0" y="58" width="180" height="192" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+    <text class="bad mono" x="90" y="47" font-size="8" text-anchor="middle">cropped · 240px</text>
+    <text class="bad mono" x="90" y="270" font-size="8" text-anchor="middle">cropped · 240px</text>
+    <text class="good mono h" x="90" y="150" font-size="9" text-anchor="middle">SAFE</text>
+    <text class="good mono" x="90" y="163" font-size="8" text-anchor="middle">1080 × 1440</text>
+
+    <text class="bad mono h" x="0" y="302" font-size="10.5">Cover titles sliced off the grid</text>
+    <text class="t t-dim mono" x="0" y="317" font-size="9.5">--preset instagram-reels-to-grid</text>
+  </g>
+
+  <!-- ================= IG Feed 4:5 -> 3:4 grid ================= -->
+  <g transform="translate(660,86)">
+    <text class="t h mono" x="0" y="0" font-size="11.5">IG Feed 4:5 → 3:4 Grid</text>
+    <text class="t t-dim mono" x="0" y="15" font-size="9.5">1080 × 1350</text>
+
+    <rect class="frame" x="18" y="26" width="164" height="205" rx="4" stroke-width="1"/>
+    <!-- 34px each side out of 1080 -->
+    <rect class="chrome" x="18" y="26"  width="6" height="205"/>
+    <rect class="chrome" x="176" y="26" width="6" height="205"/>
+    <rect class="safe"   x="24" y="26" width="152" height="205" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+    <text class="bad mono" x="4"  y="134" font-size="8" text-anchor="middle" transform="rotate(-90,4,134)">34px</text>
+    <text class="bad mono" x="196" y="134" font-size="8" text-anchor="middle" transform="rotate(-90,196,134)">34px</text>
+    <text class="good mono h" x="100" y="124" font-size="9" text-anchor="middle">SAFE</text>
+    <text class="good mono" x="100" y="137" font-size="8" text-anchor="middle">1012 × 1350</text>
+
+    <text class="bad mono h" x="0" y="302" font-size="10.5">Graph API rejects 3:4 (err 36003)</text>
+    <text class="t t-dim mono" x="0" y="317" font-size="9.5">--preset instagram-feed-to-grid</text>
+  </g>
+
+  <text class="t t-dim mono" x="40" y="408" font-size="10.5">postflight safezone --preset tiktok-organic --box 60,1500,960,300:"caption card"</text>
+</svg>

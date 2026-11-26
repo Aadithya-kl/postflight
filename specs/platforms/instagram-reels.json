@@ -1,0 +1,100 @@
+{
+  "id": "instagram-reels",
+  "name": "Instagram Reels",
+  "shortName": "IG Reels",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "standard",
+    "hardLimit": 2200,
+    "apiHardLimit": 2200,
+    "premiumLimit": null,
+    "maxBytes": null,
+    "urlWeight": null,
+    "firstCommentLimit": 2200,
+    "forbiddenChars": [],
+    "notes": "Tightest single-line mobile fold (~55-60 chars) before '...more' due to overlay HUD."
+  },
+  "folds": {
+    "mobileChars": 55,
+    "mobileLines": 1,
+    "mobileCharsWithMedia": 55,
+    "mobileLinesWithMedia": 1,
+    "desktopChars": 115,
+    "desktopLines": 2,
+    "desktopCharsWithMedia": 115,
+    "desktopLinesWithMedia": 2,
+    "blankLinesCountAsLines": true,
+    "foldLabel": "...more",
+    "ftcMaxMobileChars": 55
+  },
+  "hashtags": {
+    "hardCap": 5,
+    "recommendedMin": 3,
+    "recommendedMax": 5,
+    "style": "pascal-case-preferred",
+    "excessBehavior": "Tags beyond 5 are rejected or ignored (Dec 2025 5-hashtag cap).",
+    "notes": "Pair 3-5 niche hashtags with spoken/on-screen keywords for Reels search indexing."
+  },
+  "links": {
+    "clickableInBody": false,
+    "bodyPenaltyRisk": "moderate",
+    "firstCommentSafe": false,
+    "maxUniqueUrlsApi": null,
+    "recommendedStrategy": "Do not place raw URLs in Reels captions; direct viewers to bio or organic conversation.",
+    "notes": "Reels captions do not hyperlink URLs."
+  },
+  "altText": {
+    "supported": true,
+    "maxChars": 1000,
+    "recommendedMax": 125
+  },
+  "media": {
+    "maxImages": 0,
+    "maxImageSizeBytes": 8388608,
+    "maxVideoSizeBytes": 1073741824,
+    "maxVideoDurationSec": 1200,
+    "recommendedVideoDurationSec": 180,
+    "canMixImagesAndVideo": false,
+    "aspectRatios": ["9:16"],
+    "recommendedCanvas": { "width": 1080, "height": 1920 },
+    "profileGridCrop": {
+      "feedCanvas": "1080x1920 (9:16)",
+      "gridRatio": "3:4",
+      "innerSafeWidth": 1080,
+      "innerSafeHeight": 1440,
+      "sideCropPx": 0
+    },
+    "watermarkPenalized": true,
+    "firstSlideLocksRatio": false
+  },
+  "safeZones": {
+    "organic": {
+      "canvas": { "width": 1080, "height": 1920 },
+      "top": 269,
+      "bottom": 480,
+      "left": 65,
+      "right": 168,
+      "label": "IG Reels Organic (14% top, 25% bottom, right action stack)"
+    },
+    "ad": {
+      "canvas": { "width": 1080, "height": 1920 },
+      "top": 269,
+      "bottom": 672,
+      "left": 65,
+      "right": 168,
+      "label": "IG Reels Paid Ad (Meta Official: 14% top, 35% bottom + right stack)"
+    }
+  },
+  "oauth": {
+    "accessTokenTtlHours": 1440,
+    "refreshTokenTtlDays": null,
+    "supportsProgrammaticRefresh": true,
+    "rotationRaceRisk": false,
+    "gotcha": "Graph API Reels container strictly requires MP4/MOV with moov atom at front (-movflags +faststart), closed GOP, yuv420p, progressive scan, AAC <=48kHz. Videos >3 min lose non-follower discovery recommendations. Meta originality classifiers apply 30-day reach penalty to recycled/aggregated content. 'Trial feeds' test Reels on non-followers first — early watch time and retention determine distribution."
+  },
+  "sources": [
+    "Meta Ads Guide Reels Safe Zones (14% top / 35% bottom / 6% sides)",
+    "Meta Graph API Reels Video Container Specifications"
+  ]
+}

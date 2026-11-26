@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" role="img" aria-labelledby="title desc">
+  <title id="title">PostFlight architecture: one zero-dependency core, four surfaces</title>
+  <desc id="desc">Open platform specs feed a zero-dependency TypeScript core, which powers the CLI, the MCP server, the local web Studio, and an embeddable SDK.</desc>
+  <style>
+    .bg       { fill: #ffffff; }
+    .card     { fill: #f8fafc; stroke: #cbd5e1; }
+    .card-key { fill: #eff6ff; stroke: #0d5e99; }
+    .card-spec{ fill: #f0fdf4; stroke: #137547; }
+    .t        { fill: #0f172a; font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .t-dim    { fill: #64748b; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .t-key    { fill: #0d5e99; }
+    .t-spec   { fill: #137547; }
+    .line     { stroke: #94a3b8; fill: none; }
+    .h        { font-weight: 700; }
+    .arrowhead{ fill: #94a3b8; }
+    @media (prefers-color-scheme: dark) {
+      .bg       { fill: #0d1117; }
+      .card     { fill: #161b22; stroke: #30363d; }
+      .card-key { fill: #0c2d48; stroke: #58a6ff; }
+      .card-spec{ fill: #0d2b1e; stroke: #3fb950; }
+      .t        { fill: #e6edf3; }
+      .t-dim    { fill: #8b949e; }
+      .t-key    { fill: #58a6ff; }
+      .t-spec   { fill: #3fb950; }
+      .line     { stroke: #484f58; }
+      .arrowhead{ fill: #484f58; }
+    }
+  </style>
+
+  <rect class="bg" width="900" height="400" rx="8"/>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="arrowhead" d="M 0 0 L 10 5 L 0 10 z"/>
+    </marker>
+  </defs>
+
+  <!-- Specs -->
+  <rect class="card-spec" x="24" y="150" width="190" height="100" rx="8" stroke-width="1.5"/>
+  <text class="t t-spec h" x="119" y="182" font-size="14" text-anchor="middle">Open Platform Specs</text>
+  <text class="t-dim" x="119" y="203" font-size="11" text-anchor="middle">specs/platforms/*.json</text>
+  <text class="t t-dim" x="119" y="224" font-size="11" text-anchor="middle">9 platforms · versioned data</text>
+
+  <path class="line" d="M 214 200 L 294 200" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- Core -->
+  <rect class="card-key" x="296" y="124" width="214" height="152" rx="8" stroke-width="2"/>
+  <text class="t t-key h" x="403" y="158" font-size="16" text-anchor="middle">@postflight/core</text>
+  <text class="t-dim" x="403" y="182" font-size="11" text-anchor="middle">0 runtime dependencies</text>
+  <line class="line" x1="320" y1="196" x2="486" y2="196" stroke-width="1"/>
+  <text class="t" x="403" y="216" font-size="11" text-anchor="middle">77 deterministic rules</text>
+  <text class="t" x="403" y="234" font-size="11" text-anchor="middle">16 safe-zone presets</text>
+  <text class="t" x="403" y="252" font-size="11" text-anchor="middle">Node 20+ · Browser ESM</text>
+
+  <!-- Fan-out lines -->
+  <path class="line" d="M 510 200 L 548 200 L 548 60  L 586 60"  stroke-width="1.5" marker-end="url(#a)"/>
+  <path class="line" d="M 510 200 L 548 200 L 548 152 L 586 152" stroke-width="1.5" marker-end="url(#a)"/>
+  <path class="line" d="M 510 200 L 548 200 L 548 244 L 586 244" stroke-width="1.5" marker-end="url(#a)"/>
+  <path class="line" d="M 510 200 L 548 200 L 548 336 L 586 336" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- Surfaces -->
+  <rect class="card" x="588" y="28" width="288" height="64" rx="8" stroke-width="1.5"/>
+  <text class="t h" x="606" y="52" font-size="13">CLI</text>
+  <text class="t-dim" x="606" y="72" font-size="10.5">postflight check · SARIF 2.1.0 · GitHub Actions</text>
+
+  <rect class="card" x="588" y="120" width="288" height="64" rx="8" stroke-width="1.5"/>
+  <text class="t h" x="606" y="144" font-size="13">MCP Server</text>
+  <text class="t-dim" x="606" y="164" font-size="10.5">9 governed tools · Claude Code, Cursor</text>
+
+  <rect class="card" x="588" y="212" width="288" height="64" rx="8" stroke-width="1.5"/>
+  <text class="t h" x="606" y="236" font-size="13">Web Studio</text>
+  <text class="t-dim" x="606" y="256" font-size="10.5">Local-first · 6 instruments · zero telemetry</text>
+
+  <rect class="card" x="588" y="304" width="288" height="64" rx="8" stroke-width="1.5"/>
+  <text class="t h" x="606" y="328" font-size="13">TypeScript SDK</text>
+  <text class="t-dim" x="606" y="348" font-size="10.5">Embed in your own scheduler or app</text>
+</svg>

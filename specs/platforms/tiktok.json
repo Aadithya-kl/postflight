@@ -1,0 +1,104 @@
+{
+  "id": "tiktok",
+  "name": "TikTok",
+  "shortName": "TikTok",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "standard",
+    "hardLimit": 4000,
+    "apiHardLimit": 2200,
+    "premiumLimit": null,
+    "maxBytes": null,
+    "urlWeight": null,
+    "firstCommentLimit": 150,
+    "forbiddenChars": [],
+    "notes": "CRITICAL API DIVERGENCE: Native app supports 4,000 chars, but TikTok Content Posting API caps captions at 2,200 chars (truncating/rejecting anything 2,201-4,000)."
+  },
+  "folds": {
+    "mobileChars": 80,
+    "mobileLines": 2,
+    "mobileCharsWithMedia": 80,
+    "mobileLinesWithMedia": 2,
+    "desktopChars": 120,
+    "desktopLines": 2,
+    "desktopCharsWithMedia": 120,
+    "desktopLinesWithMedia": 2,
+    "blankLinesCountAsLines": true,
+    "foldLabel": "...more",
+    "ftcMaxMobileChars": 80
+  },
+  "hashtags": {
+    "hardCap": 5,
+    "recommendedMin": 3,
+    "recommendedMax": 5,
+    "style": "pascal-case-preferred",
+    "excessBehavior": "Native app blocks posting on the 6th hashtag ('Maximum 5 hashtags' rollout Jul-Sep 2025).",
+    "notes": "Hard 5-hashtag cap rolled out in 2025. Avoid generic #fyp/#foryou tags."
+  },
+  "links": {
+    "clickableInBody": false,
+    "bodyPenaltyRisk": "low",
+    "firstCommentSafe": false,
+    "maxUniqueUrlsApi": null,
+    "recommendedStrategy": "Use bio link or TikTok Shop anchor; raw caption URLs are not clickable.",
+    "notes": "Captions do not linkify external URLs."
+  },
+  "altText": {
+    "supported": false,
+    "maxChars": null,
+    "recommendedMax": null
+  },
+  "media": {
+    "maxImages": 35,
+    "maxImageSizeBytes": 10485760,
+    "maxVideoSizeBytes": 4294967296,
+    "maxVideoDurationSec": 600,
+    "recommendedVideoDurationSec": 60,
+    "canMixImagesAndVideo": false,
+    "aspectRatios": ["9:16"],
+    "recommendedCanvas": { "width": 1080, "height": 1920 },
+    "profileGridCrop": null,
+    "watermarkPenalized": true,
+    "firstSlideLocksRatio": false
+  },
+  "safeZones": {
+    "organic": {
+      "canvas": { "width": 1080, "height": 1920 },
+      "top": 240,
+      "bottom": 380,
+      "left": 60,
+      "right": 180,
+      "label": "TikTok Organic (header tabs, caption/audio marquee, right action rail)"
+    },
+    "ad": {
+      "canvas": { "width": 1080, "height": 1920 },
+      "top": 240,
+      "bottom": 484,
+      "left": 60,
+      "right": 180,
+      "lowerRight": { "startY": 840, "right": 300 },
+      "label": "TikTok Paid In-Feed Ad (CTA bar + lower-right notch)"
+    },
+    "adStrict": {
+      "canvas": { "width": 1080, "height": 1920 },
+      "top": 240,
+      "bottom": 660,
+      "left": 120,
+      "right": 180,
+      "lowerRight": { "startY": 840, "right": 300 },
+      "label": "TikTok Strict Paid Ad + Interactive Add-on / Long Caption"
+    }
+  },
+  "oauth": {
+    "accessTokenTtlHours": 24,
+    "refreshTokenTtlDays": 365,
+    "supportsProgrammaticRefresh": true,
+    "rotationRaceRisk": true,
+    "gotcha": "Access token expires every 24h! Unaudited developer apps are locked to SELF_ONLY private posting. Audio fingerprinting can auto-reject or mute scheduled video content if commercial audio lacks licensing via TikTok's native sound library. TikTok Shop content is algorithmically favored over external link traffic."
+  },
+  "sources": [
+    "TikTok Content Posting API Docs (2200 API caption cap, 4GB video, 35 Photo Mode)",
+    "TikTok Business Help Center In-Feed Ad Safe Zones"
+  ]
+}

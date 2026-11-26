@@ -1,0 +1,43 @@
+version: 2
+
+updates:
+  # @postflight/core, /cli and /mcp carry zero runtime dependencies by design,
+  # so this only ever touches devDependencies and the Studio's React/Vite stack.
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+    groups:
+      typescript-toolchain:
+        patterns:
+          - "typescript"
+          - "@types/*"
+      studio-frontend:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "vite"
+          - "@vitejs/*"
+          - "lucide-react"
+    ignore:
+      # Node 20 is the supported floor; @types/node must not jump ahead of it.
+      - dependency-name: "@types/node"
+        update-types:
+          - version-update:semver-major
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    labels:
+      - dependencies
+      - ci
+    groups:
+      github-actions:
+        patterns:
+          - "*"

@@ -1,0 +1,32 @@
+{
+  "name": "@postflight/studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local-first visual Pre-Flight Studio for social media fold simulation, safe-zone X-ray, 1-to-N compilation, WCAG/OG forensics, comment triage, and crisis governance.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@postflight/core": "*",
+    "lucide-react": "^0.511.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^6.3.5"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateeekranga/postflight.git",
+    "directory": "apps/studio"
+  },
+  "author": "prateeekranga (https://github.com/prateeekranga)"
+}

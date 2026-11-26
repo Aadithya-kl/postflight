@@ -1,0 +1,19 @@
+# Code owners are requested for review automatically on matching pull requests.
+# Later rules win, so the most specific pattern should appear last.
+# https://docs.github.com/articles/about-code-owners
+
+# Default owner for everything in the repository
+*                                   @prateeekranga
+
+# The engine: rule catalog, counters, fold physics, safe zones.
+# Changes here affect every surface (CLI, MCP, Studio, SDK) at once.
+/packages/core/                     @prateeekranga
+
+# Platform spec registry. These values gate other people's publishing
+# pipelines, so every change needs a cited source.
+/specs/                             @prateeekranga
+/packages/core/src/specs/           @prateeekranga
+
+# Security policy, CI, and release automation
+/SECURITY.md                        @prateeekranga
+/.github/workflows/                 @prateeekranga

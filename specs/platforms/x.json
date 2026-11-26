@@ -1,0 +1,87 @@
+{
+  "id": "x",
+  "name": "X (Twitter)",
+  "shortName": "X",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "x-weighted",
+    "hardLimit": 280,
+    "apiHardLimit": 280,
+    "premiumLimit": 25000,
+    "maxBytes": null,
+    "urlWeight": 23,
+    "firstCommentLimit": 280,
+    "forbiddenChars": [],
+    "notes": "Uses twitter-text v3 weighted counting: ASCII/Latin=1, CJK & most emojis=2, every http(s) URL=flat 23 chars via t.co."
+  },
+  "folds": {
+    "mobileChars": 280,
+    "mobileLines": null,
+    "mobileCharsWithMedia": 280,
+    "mobileLinesWithMedia": null,
+    "desktopChars": 280,
+    "desktopLines": null,
+    "desktopCharsWithMedia": 280,
+    "desktopLinesWithMedia": null,
+    "blankLinesCountAsLines": false,
+    "foldLabel": "Show more",
+    "ftcMaxMobileChars": 280
+  },
+  "hashtags": {
+    "hardCap": null,
+    "recommendedMin": 0,
+    "recommendedMax": 2,
+    "style": "standard",
+    "excessBehavior": "More than 2 hashtags triggers spam heuristics and hurts Heavy Ranker engagement.",
+    "notes": "X Help Center recommends <=2 hashtags; hashtags are banned in X Ads."
+  },
+  "links": {
+    "clickableInBody": true,
+    "bodyPenaltyRisk": "high",
+    "firstCommentSafe": true,
+    "maxUniqueUrlsApi": null,
+    "recommendedStrategy": "Publish native value in post 1 and place external links in the follow-up reply of a thread.",
+    "notes": "Non-Premium link-only posts show severely suppressed engagement; X pay-per-use API also prices link posts higher than text-only."
+  },
+  "altText": {
+    "supported": true,
+    "maxChars": 1000,
+    "recommendedMax": 300
+  },
+  "media": {
+    "maxImages": 20,
+    "maxImageSizeBytes": 5242880,
+    "maxVideoSizeBytes": 536870912,
+    "maxVideoDurationSec": 140,
+    "recommendedVideoDurationSec": 60,
+    "canMixImagesAndVideo": true,
+    "aspectRatios": ["16:9", "1:1", "4:5"],
+    "recommendedCanvas": { "width": 1200, "height": 675 },
+    "profileGridCrop": null,
+    "watermarkPenalized": false,
+    "firstSlideLocksRatio": false
+  },
+  "safeZones": {
+    "ogCard": {
+      "canvas": { "width": 1200, "height": 630 },
+      "top": 15,
+      "bottom": 15,
+      "left": 60,
+      "right": 60,
+      "label": "X summary_large_image 2:1 crop (1200x600)"
+    }
+  },
+  "oauth": {
+    "accessTokenTtlHours": 2,
+    "refreshTokenTtlDays": 180,
+    "supportsProgrammaticRefresh": true,
+    "rotationRaceRisk": true,
+    "gotcha": "Requires offline.access scope for refresh token. Concurrent refresh workers trigger RFC 9700 rotation race invalidating the entire token chain; enforce single-flight locking. v1.1 media endpoints (upload.x.com) are sunset — use v2 /2/media/upload flow. Official POST /2/tweets API docs cap media_ids at 4 photos (native/web expanded to 20, undocumented in API). Starting a reply post with @handle hides it from non-mutual followers' timelines. Pay-per-use API prices link posts higher than text/media-only."
+  },
+  "sources": [
+    "X Developer Documentation (twitter-text weighted counting, t.co 23-char rule, Cards summary_large_image, v2 media upload, 20-image expansion 2026)",
+    "Buffer Multi-Million Post Link Engagement Study (2025)",
+    "X API v1.1 media upload sunset — must use v2 /2/media/upload/initialize+APPEND+FINALIZE flow"
+  ]
+}

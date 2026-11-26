@@ -1,0 +1,92 @@
+{
+  "id": "instagram-feed",
+  "name": "Instagram Feed & Carousel",
+  "shortName": "IG Feed",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "standard",
+    "hardLimit": 2200,
+    "apiHardLimit": 2200,
+    "premiumLimit": null,
+    "maxBytes": null,
+    "urlWeight": null,
+    "firstCommentLimit": 2200,
+    "forbiddenChars": [],
+    "notes": "Caption URLs are NOT clickable. Hashtag hard cap was slashed from 30 to 5 in Dec 2025."
+  },
+  "folds": {
+    "mobileChars": 125,
+    "mobileLines": 2,
+    "mobileCharsWithMedia": 125,
+    "mobileLinesWithMedia": 2,
+    "desktopChars": 140,
+    "desktopLines": 3,
+    "desktopCharsWithMedia": 140,
+    "desktopLinesWithMedia": 3,
+    "blankLinesCountAsLines": true,
+    "foldLabel": "...more",
+    "ftcMaxMobileChars": 125
+  },
+  "hashtags": {
+    "hardCap": 5,
+    "recommendedMin": 3,
+    "recommendedMax": 5,
+    "style": "pascal-case-preferred",
+    "excessBehavior": "Tags beyond 5 are rejected or ignored since Instagram's Dec 2025 5-hashtag cap.",
+    "notes": "Instagram reduced max hashtags from 30 to 5 in Dec 2025 (@creators / Adam Mosseri). Focus on natural caption SEO & alt text."
+  },
+  "links": {
+    "clickableInBody": false,
+    "bodyPenaltyRisk": "moderate",
+    "firstCommentSafe": false,
+    "maxUniqueUrlsApi": null,
+    "recommendedStrategy": "Do not paste raw URLs in captions (non-clickable dead text). Use Story link stickers, bio link, or organic DM handoff.",
+    "notes": "Raw URLs in IG feed captions cannot be tapped."
+  },
+  "altText": {
+    "supported": true,
+    "maxChars": 1000,
+    "recommendedMax": 125
+  },
+  "media": {
+    "maxImages": 20,
+    "maxImageSizeBytes": 8388608,
+    "maxVideoSizeBytes": 1073741824,
+    "maxVideoDurationSec": 60,
+    "recommendedVideoDurationSec": 30,
+    "canMixImagesAndVideo": true,
+    "aspectRatios": ["4:5", "3:4", "1:1", "1.91:1"],
+    "recommendedCanvas": { "width": 1080, "height": 1350 },
+    "profileGridCrop": {
+      "feedCanvas": "1080x1350 (4:5)",
+      "gridRatio": "3:4",
+      "innerSafeWidth": 1012,
+      "innerSafeHeight": 1350,
+      "sideCropPx": 34
+    },
+    "watermarkPenalized": true,
+    "firstSlideLocksRatio": true
+  },
+  "safeZones": {
+    "feedToGrid": {
+      "canvas": { "width": 1080, "height": 1350 },
+      "top": 0,
+      "bottom": 0,
+      "left": 34,
+      "right": 34,
+      "label": "IG 4:5 Feed -> 3:4 Profile Grid Safe Box (1012x1350 inner)"
+    }
+  },
+  "oauth": {
+    "accessTokenTtlHours": 1440,
+    "refreshTokenTtlDays": null,
+    "supportsProgrammaticRefresh": true,
+    "rotationRaceRisk": false,
+    "gotcha": "60-day long-lived token has NO refresh token — must call GET /refresh_access_token while token is >24h old AND still active. Expired tokens or password/role changes require manual re-auth. Graph API caps carousels at 10 items (vs 20 native) and rejects 3:4 uploads (Error 36003). Meta originality classifiers apply 30-day reach penalty to recycled/aggregated content. Watermarked content (e.g. TikTok logo) is algorithmically suppressed."
+  },
+  "sources": [
+    "Meta for Developers Instagram Platform Docs (8MB JPEG, Graph API 4:5-1.91:1, 10-item API carousel)",
+    "Instagram @creators / Adam Mosseri (Dec 18-19, 2025: 5-hashtag cap, 3:4 profile grid)"
+  ]
+}

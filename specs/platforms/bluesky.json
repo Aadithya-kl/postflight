@@ -1,0 +1,77 @@
+{
+  "id": "bluesky",
+  "name": "Bluesky (AT Protocol)",
+  "shortName": "Bluesky",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "bluesky-dual",
+    "hardLimit": 300,
+    "apiHardLimit": 300,
+    "premiumLimit": null,
+    "maxBytes": 3000,
+    "urlWeight": null,
+    "firstCommentLimit": 300,
+    "forbiddenChars": [],
+    "notes": "DUAL CEILING: Must satisfy <=300 grapheme clusters (Intl.Segmenter) AND <=3,000 UTF-8 bytes. Rich text facets (links/mentions/tags) require exact 0-indexed UTF-8 byteStart/byteEnd offsets (NOT JS UTF-16 .length)."
+  },
+  "folds": {
+    "mobileChars": 300,
+    "mobileLines": 25,
+    "mobileCharsWithMedia": 300,
+    "mobileLinesWithMedia": 25,
+    "desktopChars": 300,
+    "desktopLines": 25,
+    "desktopCharsWithMedia": 300,
+    "desktopLinesWithMedia": 25,
+    "blankLinesCountAsLines": true,
+    "foldLabel": "Show more",
+    "ftcMaxMobileChars": 300
+  },
+  "hashtags": {
+    "hardCap": null,
+    "recommendedMin": 0,
+    "recommendedMax": 3,
+    "style": "pascal-case-preferred",
+    "excessBehavior": "Must be serialized as app.bsky.richtext.facet#tag with UTF-8 byte indices.",
+    "notes": "Keep to 1-3 tags within the 300-grapheme budget."
+  },
+  "links": {
+    "clickableInBody": true,
+    "bodyPenaltyRisk": "none",
+    "firstCommentSafe": true,
+    "maxUniqueUrlsApi": null,
+    "recommendedStrategy": "External links are welcomed on Bluesky with zero algorithmic link penalty; include an external embed card with <=1MB thumbnail.",
+    "notes": "Open protocol feeds do not suppress outbound links; must encode URLs as app.bsky.richtext.facet#link."
+  },
+  "altText": {
+    "supported": true,
+    "maxChars": 2000,
+    "recommendedMax": 300
+  },
+  "media": {
+    "maxImages": 10,
+    "maxImageSizeBytes": 2000000,
+    "maxVideoSizeBytes": 314572800,
+    "maxVideoDurationSec": 600,
+    "recommendedVideoDurationSec": 90,
+    "canMixImagesAndVideo": false,
+    "aspectRatios": ["1:1", "16:9", "4:5"],
+    "recommendedCanvas": { "width": 1200, "height": 1200 },
+    "profileGridCrop": null,
+    "watermarkPenalized": false,
+    "firstSlideLocksRatio": false
+  },
+  "safeZones": {},
+  "oauth": {
+    "accessTokenTtlHours": 2,
+    "refreshTokenTtlDays": 90,
+    "supportsProgrammaticRefresh": true,
+    "rotationRaceRisk": true,
+    "gotcha": "DECIMAL BYTE CAP: app.bsky.embed.images enforces 2,000,000 decimal bytes (NOT 2 MiB = 2,097,152 bytes) and strictly 4 images (up to 10 images requires app.bsky.embed.gallery); OS-reported '2.0 MB' images fail PDS upload. Link card thumbnails stay at 1,000,000 bytes. Cannot mix images + video. Video upload (10-min / 300 MB as of Aug 2026) requires verified email and faces daily ceiling (~25 videos / 10 GB). Numeric-only hashtags (#2026) do not linkify. Supported video formats: MP4 (H.264 recommended), MOV, WebM, MPEG."
+  },
+  "sources": [
+    "AT Protocol Lexicons (app.bsky.feed.post maxGraphemes:300 / maxLength:3000, app.bsky.embed.images maxSize:2000000 / 10-image carousel, app.bsky.embed.video 10-min Aug 2026 / 300MB)",
+    "Bluesky Moderation: Composable labeler ecosystem (Ozone/Osprey) — subscribe to third-party labelers for content warnings"
+  ]
+}

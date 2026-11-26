@@ -1,0 +1,76 @@
+{
+  "id": "threads",
+  "name": "Threads",
+  "shortName": "Threads",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "threads-emoji-utf8",
+    "hardLimit": 500,
+    "apiHardLimit": 500,
+    "premiumLimit": 10000,
+    "maxBytes": null,
+    "urlWeight": null,
+    "firstCommentLimit": 500,
+    "forbiddenChars": [],
+    "notes": "UTF-8 EMOJI CATCH: Standard chars count as 1, but emojis consume their UTF-8 byte length (4 to 18 units for ZWJ/flag/skin-tone emojis). Text Attachments allow up to 10,000 chars."
+  },
+  "folds": {
+    "mobileChars": 500,
+    "mobileLines": null,
+    "mobileCharsWithMedia": 500,
+    "mobileLinesWithMedia": null,
+    "desktopChars": 500,
+    "desktopLines": null,
+    "desktopCharsWithMedia": 500,
+    "desktopLinesWithMedia": null,
+    "blankLinesCountAsLines": false,
+    "foldLabel": "Read more",
+    "ftcMaxMobileChars": 200
+  },
+  "hashtags": {
+    "hardCap": 1,
+    "recommendedMin": 0,
+    "recommendedMax": 1,
+    "style": "topic-tag",
+    "excessBehavior": "Threads allows strictly 1 topic tag (<=50 chars); multiple #hashtags are unsupported or error via API.",
+    "notes": "Use 1 clean topic tag; Threads full-text search indexes normal prose."
+  },
+  "links": {
+    "clickableInBody": true,
+    "bodyPenaltyRisk": "moderate",
+    "firstCommentSafe": true,
+    "maxUniqueUrlsApi": 5,
+    "recommendedStrategy": "Lead with a conversational take that earns replies; put external links in the immediate reply to preserve reply velocity.",
+    "notes": "Threads API enforces max 5 unique URLs per post. Bare link posts starve reply-velocity ranking."
+  },
+  "altText": {
+    "supported": true,
+    "maxChars": 1000,
+    "recommendedMax": 200
+  },
+  "media": {
+    "maxImages": 20,
+    "maxImageSizeBytes": 8388608,
+    "maxVideoSizeBytes": 1073741824,
+    "maxVideoDurationSec": 300,
+    "recommendedVideoDurationSec": 90,
+    "canMixImagesAndVideo": true,
+    "aspectRatios": ["4:5", "1:1", "9:16"],
+    "recommendedCanvas": { "width": 1080, "height": 1350 },
+    "profileGridCrop": null,
+    "watermarkPenalized": false,
+    "firstSlideLocksRatio": false
+  },
+  "safeZones": {},
+  "oauth": {
+    "accessTokenTtlHours": 1440,
+    "refreshTokenTtlDays": null,
+    "supportsProgrammaticRefresh": true,
+    "rotationRaceRisk": false,
+    "gotcha": "Meta 60-day long-lived token exchange (>24h old, before expiry); two-step media container publish requires polling status before finalize. API enforces 250 posts/24h rolling window, 1,000 replies/24h, 100 deletions/24h. Check quota via GET /{user-id}/threads_publishing_limit. Wait ~30s between container creation and publish for video."
+  },
+  "sources": [
+    "Meta for Developers Threads API Docs (500 chars, 10k Text Attachment, 5 unique URLs, 8MB image / 1GB video / 20 carousel items, 1 topic tag)"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "linkedin",
+  "name": "LinkedIn",
+  "shortName": "LinkedIn",
+  "specVersion": "2026.2",
+  "lastVerified": "2026-11-25",
+  "counting": {
+    "algorithm": "utf16",
+    "hardLimit": 3000,
+    "apiHardLimit": 3000,
+    "premiumLimit": null,
+    "maxBytes": null,
+    "urlWeight": null,
+    "firstCommentLimit": 1250,
+    "forbiddenChars": [],
+    "notes": "UTF-16 code units; URLs count in full; blank lines consume a full visible line before the '...more' fold."
+  },
+  "folds": {
+    "mobileChars": 140,
+    "mobileLines": 3,
+    "mobileCharsWithMedia": 115,
+    "mobileLinesWithMedia": 2,
+    "desktopChars": 210,
+    "desktopLines": 5,
+    "desktopCharsWithMedia": 150,
+    "desktopLinesWithMedia": 3,
+    "blankLinesCountAsLines": true,
+    "foldLabel": "...more",
+    "ftcMaxMobileChars": 100
+  },
+  "hashtags": {
+    "hardCap": null,
+    "recommendedMin": 0,
+    "recommendedMax": 3,
+    "style": "pascal-case-preferred",
+    "excessBehavior": "More than 5 hashtags triggers spam heuristics; semantic NLP indexes body copy directly.",
+    "notes": "Optimal is 0-3 targeted hashtags. Avoid >5 tags."
+  },
+  "links": {
+    "clickableInBody": true,
+    "bodyPenaltyRisk": "high",
+    "firstCommentSafe": false,
+    "maxUniqueUrlsApi": null,
+    "recommendedStrategy": "Keep full value native (or PDF carousel). Place links in profile Featured section, newsletter, or add organically after initial dwell velocity — avoid robotic instant first-comment links.",
+    "notes": "Outbound links in main body drop median reach 40-60% due to dwell-time loss. Instant 'link in first comment' bridge behavior is also pattern-matched."
+  },
+  "altText": {
+    "supported": true,
+    "maxChars": 4086,
+    "recommendedMax": 300
+  },
+  "media": {
+    "maxImages": 20,
+    "maxImageSizeBytes": 8388608,
+    "maxVideoSizeBytes": 5368709120,
+    "maxVideoDurationSec": 600,
+    "recommendedVideoDurationSec": 90,
+    "canMixImagesAndVideo": false,
+    "aspectRatios": ["4:5", "1:1", "1.91:1"],
+    "recommendedCanvas": { "width": 1080, "height": 1350 },
+    "profileGridCrop": null,
+    "watermarkPenalized": false,
+    "firstSlideLocksRatio": false
+  },
+  "safeZones": {
+    "pdfCarousel": {
+      "canvas": { "width": 1080, "height": 1350 },
+      "top": 80,
+      "bottom": 100,
+      "left": 80,
+      "right": 80,
+      "label": "LinkedIn PDF Carousel Viewer Safe Margin (arrows + slide counter)"
+    }
+  },
+  "oauth": {
+    "accessTokenTtlHours": 1440,
+    "refreshTokenTtlDays": 365,
+    "supportsProgrammaticRefresh": false,
+    "rotationRaceRisk": true,
+    "gotcha": "Standard apps receive 60-day access tokens with NO programmatic refresh (365-day refresh is Marketing Partner only). Requires proactive browser re-auth reminders before Day 60. Daily Share API quotas (~150 requests/member/day) reset at 00:00 UTC. PDF carousels are the top-performing format (~6.6% engagement); saves are weighted higher than likes, and 'Comment KEYWORD below' funnels are throttled. The first 90-minute window determines distribution velocity."
+  },
+  "sources": [
+    "LinkedIn Marketing & API Schema Docs (altText 4086, 3000 post, 1250 comment, 100MB/300-page Document Carousel)",
+    "LinkedIn Algorithm Studies (2025-2026 dwell time, blank-line fold, 18-24h cannibalization)"
+  ]
+}

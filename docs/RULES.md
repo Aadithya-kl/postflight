@@ -33,14 +33,14 @@ Severities shown here are defaults. Per-rule overrides go in `postflight.config.
 
 ## Contents
 
-1. [Platform Limits & Protocol Counting](#1-platform-limits-protocol-counting) — `limits/*` (6 rules)
-2. [Mobile & Desktop Fold Physics](#2-mobile-desktop-fold-physics) — `fold/*` (3 rules)
-3. [Algorithmic Reach Suppressors](#3-algorithmic-reach-suppressors) — `algorithm/*` (10 rules)
-4. [Legal & Regulatory Compliance](#4-legal-regulatory-compliance) — `compliance/*` (4 rules)
-5. [WCAG 2.2 Accessibility & Social SEO](#5-wcag-22-accessibility-social-seo) — `accessibility/*` (8 rules)
-6. [Media, Carousels, Video Transcoding & Open Graph Cards](#6-media-carousels-video-transcoding-open-graph-cards) — `media/*` (41 rules)
-7. [Dark-Social Attribution](#7-dark-social-attribution) — `attribution/*` (1 rule)
-8. [Brand, Legal & Scheduling Governance](#8-brand-legal-scheduling-governance) — `governance/*` (4 rules)
+1. [Platform Limits & Protocol Counting](#1-platform-limits--protocol-counting-limits) — `limits/*` (6 rules)
+2. [Mobile & Desktop Fold Physics](#2-mobile--desktop-fold-physics-fold) — `fold/*` (3 rules)
+3. [Algorithmic Reach Suppressors](#3-algorithmic-reach-suppressors-algorithm) — `algorithm/*` (10 rules)
+4. [Legal & Regulatory Compliance](#4-legal--regulatory-compliance-compliance) — `compliance/*` (4 rules)
+5. [WCAG 2.2 Accessibility & Social SEO](#5-wcag-22-accessibility--social-seo-accessibility) — `accessibility/*` (8 rules)
+6. [Media, Carousels, Video Transcoding & Open Graph Cards](#6-media-carousels-video-transcoding--open-graph-cards-media) — `media/*` (41 rules)
+7. [Dark-Social Attribution](#7-dark-social-attribution-attribution) — `attribution/*` (1 rule)
+8. [Brand, Legal & Scheduling Governance](#8-brand-legal--scheduling-governance-governance) — `governance/*` (4 rules)
 
 ---
 

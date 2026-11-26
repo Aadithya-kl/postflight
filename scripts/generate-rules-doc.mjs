@@ -69,6 +69,27 @@ const SECTIONS = [
 
 const SEVERITY_RANK = { error: 0, warning: 1, info: 2 };
 
+/**
+ * Reproduces GitHub's heading-anchor algorithm so the table of contents links
+ * actually resolve: lowercase, drop every character that is not alphanumeric,
+ * space, hyphen or underscore, then convert spaces to hyphens.
+ *
+ *   "1. Media & OG Cards (`media/*`)"  ->  "1-media--og-cards-media"
+ *
+ * Note the doubled hyphen where "&" was removed from between two spaces.
+ */
+function githubSlug(heading) {
+  return heading
+    .toLowerCase()
+    .replace(/[^a-z0-9 _-]/g, '')
+    .replace(/ /g, '-');
+}
+
+/** The exact heading text rendered for a section, used for both the heading and its anchor. */
+function sectionHeading(section, index) {
+  return `${index + 1}. ${section.title} (\`${section.category}/*\`)`;
+}
+
 function escapePipes(text) {
   return text.replace(/\|/g, '\\|');
 }
@@ -141,10 +162,10 @@ Severities shown here are defaults. Per-rule overrides go in \`postflight.config
 
 ## Contents
 
-${SECTIONS.map(
-  (s, i) =>
-    `${i + 1}. [${s.title}](#${i + 1}-${s.title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-')}) — \`${s.category}/*\` (${(byCategory.get(s.category) ?? []).length} rule${(byCategory.get(s.category) ?? []).length === 1 ? '' : 's'})`,
-).join('\n')}`);
+${SECTIONS.map((s, i) => {
+  const count = (byCategory.get(s.category) ?? []).length;
+  return `${i + 1}. [${s.title}](#${githubSlug(sectionHeading(s, i))}) — \`${s.category}/*\` (${count} rule${count === 1 ? '' : 's'})`;
+}).join('\n')}`);
 
 SECTIONS.forEach((section, i) => {
   const rules = (byCategory.get(section.category) ?? [])
@@ -156,7 +177,7 @@ SECTIONS.forEach((section, i) => {
     );
   if (rules.length === 0) return;
 
-  parts.push(`## ${i + 1}. ${section.title} (\`${section.category}/*\`)
+  parts.push(`## ${sectionHeading(section, i)}
 
 ${section.blurb}
 

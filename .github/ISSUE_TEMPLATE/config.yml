@@ -5,9 +5,9 @@ contact_links:
     url: https://github.com/prateeekranga/postflight/discussions
     about: "Not sure if it's a bug? Want to talk through an approach, or ask how something works? Start here."
 
-  - name: Report a security vulnerability
-    url: https://github.com/prateeekranga/postflight/security/advisories/new
-    about: "Report privately via GitHub Security Advisories. Please do not open a public issue for vulnerabilities."
+  # No security entry here on purpose: GitHub generates its own "Report a
+  # security vulnerability" link from SECURITY.md, and adding one here renders
+  # the same destination twice in the chooser.
 
   - name: Looking for something to work on
     url: https://github.com/prateeekranga/postflight/blob/main/docs/GOOD_FIRST_ISSUES.md
